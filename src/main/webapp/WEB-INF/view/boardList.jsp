@@ -27,14 +27,14 @@
 	</head>
 	<body>
 		<h1>A1 게시판</h1>
-		<a href="${pageContext.request.contextPath}/addBoard?boardName=${boardName}">입력</a>
+		<a href="${pageContext.request.contextPath}/addBoard?boardName=${boardName}">게시글 등록</a>
 		<div id="container">
 			<div id="input-form">
 				<select name="category" id="category">
 					<option value="타이틀">타이틀</option>
 					<option value="닉네임">닉네임</option>
 				</select>
-	            이름 : <input type="text" id="keyword" />
+	            <input type="text" id="keyword" placeholder="검색어를 입력해주세요." />
 	        </div>
 			<table class="table table-bordered table-hover" style="width:1000px;" id="user-table">
 				<thead>
@@ -49,22 +49,26 @@
 				<tbody>
 					<c:forEach var="b" items="${list}">
 						<tr>
-							<td>
-								<c:if test="${b.boardLevel eq '중요'}">
-									<span class="bg-danger">${b.boardTitle}</span>
-								</c:if>
-								<c:if test="${b.boardLevel == null}">
+							<c:if test="${b.boardLevel eq '중요'}">
+								<td class="bg-danger">
 									${b.boardTitle}
-								</c:if>
-							</td>
-							<td>
-								<c:if test="${b.boardLevel eq '중요'}">
-									<span class="bg-danger">${b.boardMemo}</span>
-								</c:if>
-								<c:if test="${b.boardLevel == null}">
+								</td>
+							</c:if>
+							<c:if test="${b.boardLevel == null}">
+								<td>
+									${b.boardTitle}
+								</td>
+							</c:if>
+							<c:if test="${b.boardLevel eq '중요'}">
+								<td class="bg-danger">
 									${b.boardMemo}
-								</c:if>
-							</td>
+								</td>
+							</c:if>
+							<c:if test="${b.boardLevel == null}">
+								<td>
+									${b.boardMemo}
+								</td>
+							</c:if>
 							<td>${b.boardName}</td>
 							<td>
 								<a href="${pageContext.request.contextPath}/modifyBoard?boardTitle=${b.boardTitle}&boardMemo=${b.boardMemo}&boardName=${b.boardName}&boardLevel=${b.boardLevel}">수정</a>
