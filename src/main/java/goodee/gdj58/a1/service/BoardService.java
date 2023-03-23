@@ -16,7 +16,7 @@ public class BoardService {
 	
 	// a1 게시글 삭제
 	public void removeBoard(String boardTitle) {
-		System.out.println(boardTitle + "<-- boardTitle 서비스단 삭제액션 디버깅");
+		// System.out.println(boardTitle + "<-- boardTitle 서비스단 삭제액션 디버깅");
 		boardDao.deleteBoard(boardTitle);
 	}
 	

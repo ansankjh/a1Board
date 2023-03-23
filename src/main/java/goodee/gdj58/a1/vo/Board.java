@@ -2,6 +2,7 @@ package goodee.gdj58.a1.vo;
 
 import lombok.Data;
 
+
 @Data
 public class Board {
 	private String boardTitle; // 타이틀

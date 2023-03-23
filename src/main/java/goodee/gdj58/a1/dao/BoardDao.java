@@ -14,7 +14,7 @@ public class BoardDao {
 	
 	// a1 게시글 삭제
 	public void deleteBoard(String boardTitle) {
-		System.out.println(boardTitle + "<-- boardTitle 삭제액션 디버깅");
+		// System.out.println(boardTitle + "<-- boardTitle 삭제액션 디버깅");
 		for(int i=0; i<boardList.size(); i++) {
 			if(boardTitle.equals(boardList.get(i).getBoardTitle())) {
 				boardList.remove(i);

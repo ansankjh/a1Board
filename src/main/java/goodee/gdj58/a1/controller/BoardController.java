@@ -2,6 +2,8 @@ package goodee.gdj58.a1.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +23,7 @@ public class BoardController {
 	@GetMapping("/removeBoard")
 	public String removeBoard(@RequestParam(value="boardTitle") String boardTitle) {
 		
-		System.out.println(boardTitle + "<-- boardTitle 컨트롤러 삭제액션 디버깅");
+		// System.out.println(boardTitle + "<-- boardTitle 컨트롤러 삭제액션 디버깅");
 
 		boardService.removeBoard(boardTitle);
 		
@@ -64,7 +66,7 @@ public class BoardController {
 	// a1 게시판 글등록 액션
 	@PostMapping("/addBoard")
 	public String addBoard(Board board, RedirectAttributes redirectAttributes) {
-		System.out.println(board + "<-- board");
+		// System.out.println(board + "<-- board");
 		redirectAttributes.addAttribute("boardName", board.getBoardName());
 		
 		boardService.addBoard(board);
@@ -78,7 +80,7 @@ public class BoardController {
 							, @RequestParam(value="boardName", required = false) String boardName) {
 		
 		if(boardName != null) {
-			System.out.println(boardName + "<-- boardName 컨트롤러 게시글 조회 디버깅");
+			// System.out.println(boardName + "<-- boardName 컨트롤러 게시글 조회 디버깅");
 			model.addAttribute("boardName", boardName);
 		}
 		
@@ -89,8 +91,13 @@ public class BoardController {
 	@GetMapping("/boardList")
 	public String boardList(Model model
 								, @RequestParam(value="boardName", required = false) String boardName) {
+		
+		// System.out.println(word + "<-- word 컨트롤러 검색어 조회 디버깅");
+		// System.out.println(category + "<-- category 컨트롤러 검색어 조회 디버깅");
+		
+		// 한번 작성한 닉네임 다음번 게시물 작성시 자동으로 입력
 		if(boardName != null) {
-			System.out.println(boardName + "<-- boardName 컨트롤러 게시글 조회 디버깅");
+			// System.out.println(boardName + "<-- boardName 컨트롤러 게시글 조회 디버깅");
 			model.addAttribute("boardName", boardName);
 		}
 		
