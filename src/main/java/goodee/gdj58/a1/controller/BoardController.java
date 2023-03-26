@@ -2,7 +2,6 @@ package goodee.gdj58.a1.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,7 +89,9 @@ public class BoardController {
 	// a1 게시글 조회
 	@GetMapping("/boardList")
 	public String boardList(Model model
-								, @RequestParam(value="boardName", required = false) String boardName) {
+								, @RequestParam(value="boardName", required = false) String boardName
+								, @RequestParam(value="currentPage", defaultValue = "1") int currentPage
+								, @RequestParam(value="rowPerPage", defaultValue = "3") int rowPerPage) {
 		
 		// System.out.println(word + "<-- word 컨트롤러 검색어 조회 디버깅");
 		// System.out.println(category + "<-- category 컨트롤러 검색어 조회 디버깅");
